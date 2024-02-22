@@ -1,0 +1,29 @@
+.logindataa {
+    background-color: blueviolet;
+    padding-top: 200px;
+    height: 120vh;
+    width: 100%;
+}
+
+.landinglogins {
+    margin: auto;
+}
+
+.landinglogins label,
+button {
+    display: block;
+}
+
+.landinglogins input {
+    margin-bottom: 10px;
+}
+
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.centre button:hover{
+    background-color: red;
+}
