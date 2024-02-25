@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
-import './Login.css'
-import {BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Login.css';
 
-function Login({history}) {
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await axios.post('http://localhost:3100/login', {
-          email,
-          password
-        });
-        localStorage.setItem('token', response.data.token);
-        history.push('/adduser.jsx');
-      } catch (error) {
-        console.error('Login failed:', error);
-        // Handle login failure, e.g., show error message to the user
-      }
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:3100/login', {
+                email,
+                password
+            });
+
+            if (response.data.success) {
+                const token = response.data.data;
+                localStorage.setItem('token', token);
+                // Navigate to 'getuser' route
+                navigate('/getuser');
+                alert(response.data.message);
+            } else {
+                alert(response.data.message);
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+            // Handle login failure, e.g., show error message to the user
+        }
     };
-   
+
+  
+
 
     return (
         <div className='logindataa' >

@@ -11,7 +11,7 @@ function Landingpage() {
     return (
         <>
             <Landingnavbar />
-            <div class="landinggpage">
+            <div className="landinggpage">
             <button><Link to={"/login"}>Login</Link></button>
             </div>
             
