@@ -24,7 +24,7 @@ function Login() {
             if (response.data.success) {
                 const token = response.data.data;
                 localStorage.setItem('token', token);
-                navigate('/adduser');
+                navigate('/admin');
                 alert(response.data.message);
             } else {
                 alert(response.data.message);
