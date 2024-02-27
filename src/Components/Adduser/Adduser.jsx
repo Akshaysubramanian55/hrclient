@@ -24,12 +24,15 @@ function Adduser() {
                 },
                 body: json_data,
             });
+            
+            console.log('Response received:', response);
 
-            if (response.message='success') {
+
+            if (response.data.success) {
                 
-                alert(response.message);
+                alert(response.data.message);
             } else {
-                alert(response.message);
+                alert(response.data.message);
             }
         } catch (error) {
             console.error('Adding user failed:', error);

@@ -1,7 +1,9 @@
 .landinggpage{
-    height:60vh;
+    height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+  background-image: url('../Landing/images/background4.jpg');
+  background-size: cover;
+  background-position: center;
 }
