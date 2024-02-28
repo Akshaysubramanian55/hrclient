@@ -11,22 +11,21 @@ import Listusers from './Components/Listusers/Listuser'
 function App() {
 
   return (
-    // <Router>
-    //   <div>
-    //     <Routes>
-    //       <Route path="/" exact element={<Landingpage />} />
-    //       <Route path="/login" exact element={<Login />} />
-    //       <Route path='/adduser' exact element={<Adduser/>}/>
-    //       <Route path='/admin'    exact element={<Admin/>}/>
-    //     </Routes>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" exact element={<Landingpage />} />
+          <Route path="/login" exact element={<Login />} />
+          <Route path='/adduser' exact element={<Adduser/>}/>
+          <Route path='/admin'    exact element={<Admin/>}/>
+          <Route path='/getuser'    exact element={<Listusers/>}/>
+        </Routes>
 
 
 
-    //   </div>
-    // </Router>
-    <>
-      <Listusers />
-    </>
+      </div>
+    </Router>
+    
      
   )
 }

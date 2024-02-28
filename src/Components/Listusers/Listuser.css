@@ -1,4 +1,23 @@
 .header{
 
-    background-color: gray;
+ padding: 10px;
 }
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box p{
+    padding: 20px;
+    width: 300px;
+    border: 2px solid black;
+   
+}
+.labels{
+    display: flex;
+   
+}
+.labels h1{
+    padding: 20px 0 10px 230px;
+}
+ 
