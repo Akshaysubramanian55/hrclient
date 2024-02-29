@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import './Listuser.css';
+import myImage from '../Listusers/images/profile.jpeg'
+import myMail from '../Listusers/images/mail.png'
+import myPhone from '../Listusers/images/phone.png'
 
 function Listusers() {
     const [data, setData] = useState([]);
@@ -19,21 +22,31 @@ function Listusers() {
 
     return (
         <>
-        <div className="header">
-            <h1>Users</h1>
-        </div>
-        <div className="labels">
-        <h1>Name</h1>
-        <h1>Email</h1>
-        <h1 className="phone">Phone Number</h1>
-        </div>
+            <div className="header">
+                <h1>Users</h1>
+            </div>
+            <div className="labels">
+                <h1>Name</h1>
+                <h1>Email</h1>
+                <h1 className="phone">Phone Number</h1>
+            </div>
             {data.length ? (
                 data.map((user) => (
                     <div className="box" key={user.id}>
-                       
-                        <p>{user.name}</p>
-                        <p> {user.email}</p>
-                        <p> {user.phonenumber}</p>
+                        <div className="box1">
+                            <img src={myImage} alt="#"  />
+                            <p> {user.name}</p>
+                        </div>
+                        <div className="box2">
+                            <img src={myMail} alt="#" />
+                            <p> {user.email}</p>
+                        </div>
+                        <div className="box3">
+                            <img src={myPhone} alt="#" />
+                            <p> {user.phonenumber}</p>
+                        </div>
+
+
                     </div>
                 ))
             ) : (

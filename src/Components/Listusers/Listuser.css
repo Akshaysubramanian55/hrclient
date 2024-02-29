@@ -1,17 +1,44 @@
-.header{
+*{
+background-image: url('../Listusers/images/backgroundd.jpeg');
+background-size: cover;
 
+}
+.header{
+color: red;
  padding: 10px;
 }
-.box{
+.box,p{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-right: 40px;
 }
 .box p{
-    padding: 20px;
+    
     width: 300px;
-    border: 2px solid black;
+   color: red;
+
+ 
    
+}
+.box1{
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+     */
+}
+.box2{
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+     */
+}
+.box3{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    padding-right: 20px;
+    
 }
 .labels{
     display: flex;
@@ -19,5 +46,19 @@
 }
 .labels h1{
     padding: 20px 0 10px 230px;
+    color: red;
 }
+.box1 img{
+ width: 40px;
+ margin-top: 20px;
+}
+.box2  img{
+    width: 50px;
+}
+.box3 img{
+    width: 30px;
+    margin-left: 60px;
+   
+}
+ 
  
