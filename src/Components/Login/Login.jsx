@@ -6,7 +6,31 @@ import './Login.css';
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emailerror, setEmailerror] = useState('');
+    const [passworderror, setPassworderror] = useState('')
     const navigate = useNavigate();
+
+    const validateemail = (value) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!value) {
+            setEmailerror('please enter your email')
+        } else if (!emailRegex.test(value)) {
+            setEmailerror("invalid Mail")
+        } else {
+            setEmailerror('')
+        }
+    }
+    const validatepassword = (value) => {
+        const passwordRegex = /^.{6,}$/
+
+        if (!value) {
+            setPassworderror('Enter your password')
+        } else if (!passwordRegex.test(value)) {
+            setPassworderror('Enter Valid Password')
+        } else {
+            setPassworderror('')
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +45,7 @@ function Login() {
                 }
             });
 
-           
+
 
             if (response.data.success) {
                 const token = response.data.data;
@@ -45,11 +69,19 @@ function Login() {
 
             <h2>Login</h2>
             <form className='landinglogins' onSubmit={handleSubmit} >
+                <div>
+                    <label htmlFor="name">Enter your email</label>
+                    <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} />
 
-                <label htmlFor="name">Enter your email</label>
-                <input type="email" placeholder="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="password">Enter Your Password</label>
-                <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    {emailerror && <p className="error-message">{emailerror}</p>}
+                </div>
+                <div>
+                    <label htmlFor="password">Enter Your Password</label>
+                    <input type="password" placeholder="Password" name='password' value={password} onChange={(e) =>{ setPassword(e.target.value);validatepassword(e.target.value)}} />
+                    {passworderror && <p className="error-message">{passworderror}</p>}
+                </div>
+
+
 
                 <div className='centre'>
                     <button type='submit'>Login</button>

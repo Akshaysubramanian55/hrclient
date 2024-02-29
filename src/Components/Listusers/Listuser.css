@@ -1,5 +1,5 @@
-*{
-background-image: url('../Listusers/images/backgroundd.jpeg');
+.overall{
+background-image: url('../Listusers/images/back.webp');
 background-size: cover;
 
 }
@@ -16,7 +16,7 @@ color: red;
 .box p{
     
     width: 300px;
-   color: red;
+   color:red;
 
  
    
@@ -53,7 +53,7 @@ color: red;
  margin-top: 20px;
 }
 .box2  img{
-    width: 50px;
+    width: 30px;
 }
 .box3 img{
     width: 30px;
