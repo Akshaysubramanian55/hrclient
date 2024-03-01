@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
+
 import axios from 'axios';
 import './Listuser.css';
 import myImage from '../Listusers/images/icons8-male-user-50.png'
 import myMail from '../Listusers/images/icons8-mail-50.png'
 import myPhone from '../Listusers/images/icons8-phone-50.png'
-import HandleViewUser from "../Handleviewer/Handleviewer";
 
 
 function Listusers() {
@@ -22,7 +23,14 @@ function Listusers() {
         fetchData();
     }, []);
   
-    
+    const HandleViewUser = (userId, data) => {
+        if (userId !== undefined) {
+            console.log("View button clicked for user ID:", userId);
+        } else {
+            console.error("User ID is undefined");
+            console.log("Data:", data);
+        }
+    };
 
 
     return (
@@ -53,7 +61,7 @@ function Listusers() {
                                 <p> {user.phonenumber}</p>
                             </div>
                             <div>
-                                <button onClick={() => handleViewUser(user._id)}>View</button>
+                              <Link to={`/detailsuser/${user._id}`}><button onClick={() => HandleViewUser(user._id)}>View</button></Link>  
 
                             </div>
 

@@ -1,6 +1,34 @@
+.totally{
+    display: flex;
+    
+}
+
 .formss{
     display: flex;
     flex-direction: column;
    justify-content: center;
    align-items: center;
+   background-color: black;
+   color: wheat;
+   width: 30vw;
+}
+.formss label {
+    display: block;
+    padding: 40px 20px 0px 40px;
+   margin-bottom: 3px;
+}
+.formss input{
+    margin-top: 5px;
+    width:  200px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+.imagee{
+background-color:red;
+width: 60vw;
+height: 80vh;
+
+}
+.imagee img{
+    height: 90%;
 }
