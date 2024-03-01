@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  background-image: url('../Landing/images/background4.jpg');
+  /* background-image: url('../Landing/images/background4.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background-color: aqua;
 }

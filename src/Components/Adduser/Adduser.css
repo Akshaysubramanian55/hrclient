@@ -1,24 +1,52 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.adddetails,label{
+.adddetails label {
     display: block;
-    padding: 20px 20px 0px 20px;
+    padding: 40px 20px 0px 40px;
 }
-.adddata{
-    height:80vh;
-   background-image: url('../Adduser/images/background2.jpeg');
-   color:red;
-   /* background-size: cover; */
-    
+
+.adddata {
+    height: 100vh;
+    background-color: brown;
+    color: black;
+    width:50vw
 }
-.adddetails button{
-    margin-top: 10px;
+
+.adddetails button {
+    margin-top: 20px;
 }
-.adddata h2{
+
+.adddata h2 {
     padding-top: 20px;
 }
-/* https://www.pexels.com/photo/drone-shot-of-webster-s-falls-in-canada-9789919/ */
+
+.adddetails input {
+    height: 30px;
+    width: 200px;
+    padding: 20px;
+}
+
+.dataforms {
+    display: flex;
+}
+
+.adddetails {
+    margin-top: 20px;
+}
+
+.mydraw img {
+    width: 80%;
+    height: 80%;
+    margin-top: 60px;
+
+}
+
+.mydraw {
+
+    background-color: chartreuse;
+    
+}

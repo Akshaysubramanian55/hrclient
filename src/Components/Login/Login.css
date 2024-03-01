@@ -1,9 +1,23 @@
-.logindataa {
-   background-image: url('../Login/images/background3.jpeg');
-   /* background-size: cover; */
+.loginform{
+    display: flex;
+}
 
+.loginimage img{
+    width: 100%;
+    height: 50%;
+    
+}
+.loginimage{
+    background-color: aqua;
+}
+.loginimage img{
+    margin-top: 100px;
+}
+.logindataa {
+   
+background-color: cadetblue;
     padding-top: 200px;
-    height: 120vh;
+    height: 80vh;
     width: 100%;
 }
 

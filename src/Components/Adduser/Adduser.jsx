@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import mydraw from '../Adduser/images/draw1.webp'
 import './Adduser.css'
 
 function Adduser() {
@@ -105,7 +106,7 @@ function Adduser() {
             const json_data = JSON.stringify(data);
             console.log("json_data : ", json_data)
 
-            const response = await fetch('http://localhost:3100/adduser', {
+            const response = await fetch('http:</div>//localhost:3100/adduser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,64 +130,72 @@ function Adduser() {
     }
 
     return (
+        <div className="dataforms">
+
+            <div className='adddata' >
+
+                <h2>Add-User</h2>
+
+                <form className='adddetails' onSubmit={handleAdduser}>
+
+                    <div>
+                        <label htmlFor="name">Enter your UserName</label>
+                        <input type="text" placeholder="Username" name='name' value={name} onChange={(e) => { setName(e.target.value), validatename(e.target.value) }} />
+                        {nameerror && <p className="error-message">{nameerror}</p>}
+                    </div>
+
+                    <div>
+
+                        <label htmlFor="email">Enter your Email</label>
+                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} />
+                        {emailerror && <p className="error-message">{emailerror}</p>}
+                    </div>
+
+                    <div>
+                        <label htmlFor="password">Enter Your Password</label>
+                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} />
+                        {passworderror && <p className="error-message">{passworderror}</p>}
+                    </div>
+
+                    <div>
+                        <label htmlFor="phonenumber">Enter Your Phone Number</label>
+                        <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} />
+
+                        {phonenumbererror && <p className="error-message">{phonenumbererror}</p>}
+
+                    </div>
 
 
-        <div className='adddata' >
-
-            <h2>Add-User</h2>
-
-            <form className='adddetails' onSubmit={handleAdduser}>
-
-                <div>
-                    <label htmlFor="name">Enter your UserName</label>
-                    <input type="text" placeholder="Username" name='name' value={name} onChange={(e) => { setName(e.target.value), validatename(e.target.value) }} />
-                    {nameerror && <p className="error-message">{nameerror}</p>}
-                </div>
-
-                <div>
-
-                    <label htmlFor="email">Enter your Email</label>
-                    <input type="email" placeholder="email" name='email' value={email} onChange={(e) => {setEmail(e.target.value);validateemail(e.target.value)}} />
-                    {emailerror && <p className="error-message">{emailerror}</p>}
-                </div>
-
-                <div>
-                    <label htmlFor="password">Enter Your Password</label>
-                    <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => {setPassword(e.target.value);validatepassword(e.target.value)}} />
-                    {passworderror && <p className="error-message">{passworderror}</p>}
-                </div>
-
-                <div>
-                    <label htmlFor="phonenumber">Enter Your Phone Number</label>
-                    <input type="text" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => {setPhonenumber(e.target.value);validatephonenumber(e.target.value)}} />
-                    
-                    {phonenumbererror && <p className="error-message">{phonenumbererror}</p>}
-
-                </div>
+                    <div>
 
 
-                <div>
+                        <label htmlFor="address">Enter Your Address</label>
+                        <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) => { setAddress(e.target.value); validateAddress(e.target.value) }} />
+                        {Addresserror && <p className="error-message">{Addresserror}</p>}
+
+                    </div>
+
+                    <div>
+                        <label htmlFor="pincode">Enter Your Pincode</label>
+                        <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => { setPincode(e.target.value); validatepincode(e.target.value) }} />
+                        {pincodeerror && <p className="error-message">{pincodeerror}</p>}
+
+                    </div>
 
 
-                    <label htmlFor="address">Enter Your Address</label>
-                    <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) =>{setAddress(e.target.value);validateAddress(e.target.value)}} />
-                    {Addresserror && <p className="error-message">{Addresserror}</p>}
- 
-                </div>
-
-                <div>
-                    <label htmlFor="pincode">Enter Your Pincode</label>
-                    <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => {setPincode(e.target.value);validatepincode(e.target.value)}} />
-                    {pincodeerror && <p className="error-message">{pincodeerror}</p>}
-
-                </div>
 
 
-                <div className='centre'>
-                    <button type="submit" >Add User</button>
-                </div>
+                    <div className='centre'>
+                        <button type="submit" >Add User</button>
+                    </div>
 
-            </form>
+
+
+                </form>
+            </div>
+            <div className="mydraw">
+                <img src={mydraw} alt="#" />
+            </div>
         </div>
     )
 }

@@ -4,6 +4,8 @@ import './Listuser.css';
 import myImage from '../Listusers/images/icons8-male-user-50.png'
 import myMail from '../Listusers/images/icons8-mail-50.png'
 import myPhone from '../Listusers/images/icons8-phone-50.png'
+import HandleViewUser from "../Handleviewer/Handleviewer";
+
 
 function Listusers() {
     const [data, setData] = useState([]);
@@ -19,11 +21,14 @@ function Listusers() {
         };
         fetchData();
     }, []);
+  
+    
+
 
     return (
         <>
 
-            <div className="overall">
+
                 <div className="header">
                     <h1>Users</h1>
                 </div>
@@ -34,7 +39,7 @@ function Listusers() {
                 </div>
                 {data.length ? (
                     data.map((user) => (
-                        <div className="box" key={user.id}>
+                        <div className="box" key={user._id}>
                             <div className="box1">
                                 <img src={myImage} alt="#" />
                                 <p> {user.name}</p>
@@ -48,7 +53,7 @@ function Listusers() {
                                 <p> {user.phonenumber}</p>
                             </div>
                             <div>
-                                <button>View</button>
+                                <button onClick={() => handleViewUser(user._id)}>View</button>
 
                             </div>
 
@@ -58,7 +63,7 @@ function Listusers() {
                 ) : (
                     <h1>Loading....</h1>
                 )}
-            </div>
+           
 
         </>
     );

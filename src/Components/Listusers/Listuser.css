@@ -1,10 +1,6 @@
-.overall{
-background-image: url('../Listusers/images/back.webp');
-background-size: cover;
 
-}
 .header{
-color: red;
+color:black;
  padding: 10px;
 }
 .box,p{
@@ -12,13 +8,14 @@ color: red;
     justify-content: center;
     align-items: center;
     padding-right: 40px;
+   
 }
 .box p{
     
     width: 300px;
-   color:red;
+   color:black;
 
- 
+  
    
 }
 .box1{
@@ -46,7 +43,7 @@ color: red;
 }
 .labels h1{
     padding: 20px 0 10px 230px;
-    color: red;
+    color: black;
 }
 .box1 img{
  width: 40px;
@@ -60,5 +57,6 @@ color: red;
     margin-left: 60px;
    
 }
+
  
  
