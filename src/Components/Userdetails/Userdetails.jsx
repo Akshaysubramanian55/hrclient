@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../Userdetails/Userdetails.css'
-import myback from '../Userdetails/images/background3.jpeg'
+import myback from '../Userdetails/images/listimage.avif'
 
 function Userdetails() {
     const { userId } = useParams();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import mydraw from '../Adduser/images/draw1.webp'
+import mydraw from '../Adduser/images/backkk.avif'
 import './Adduser.css'
 
 function Adduser() {
@@ -86,9 +86,9 @@ function Adduser() {
         const pincodeRegex = /^[0-9]{6}$/
 
         if (!value) {
-            setPincodeerror('enter Address');
+            setPincodeerror('enter Pincode');
         } else if (!pincodeRegex.test(value)) {
-            setPincodeerror('invalid address')
+            setPincodeerror('invalid Pincode')
         } else {
             setPincodeerror('')
         }
@@ -106,7 +106,7 @@ function Adduser() {
             const json_data = JSON.stringify(data);
             console.log("json_data : ", json_data)
 
-            const response = await fetch('http:</div>//localhost:3100/adduser', {
+            const response = await fetch('http://localhost:3100/adduser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ function Adduser() {
             console.log('Response received:', response);
 
 
-            if (response.data.success) {
+            if (response.data) {
 
                 alert(response.data.message);
             } else {
@@ -140,26 +140,26 @@ function Adduser() {
 
                     <div>
                         <label htmlFor="name">Enter your UserName</label>
-                        <input type="text" placeholder="Username" name='name' value={name} onChange={(e) => { setName(e.target.value), validatename(e.target.value) }} />
+                        <input type="text" placeholder="Username" name='name' value={name} onChange={(e) => { setName(e.target.value), validatename(e.target.value) }} required />
                         {nameerror && <p className="error-message">{nameerror}</p>}
                     </div>
 
                     <div>
 
                         <label htmlFor="email">Enter your Email</label>
-                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} />
+                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} required/>
                         {emailerror && <p className="error-message">{emailerror}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="password">Enter Your Password</label>
-                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} />
+                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} required/>
                         {passworderror && <p className="error-message">{passworderror}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="phonenumber">Enter Your Phone Number</label>
-                        <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} />
+                        <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} required/>
 
                         {phonenumbererror && <p className="error-message">{phonenumbererror}</p>}
 
@@ -170,14 +170,14 @@ function Adduser() {
 
 
                         <label htmlFor="address">Enter Your Address</label>
-                        <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) => { setAddress(e.target.value); validateAddress(e.target.value) }} />
+                        <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) => { setAddress(e.target.value); validateAddress(e.target.value) }} required/>
                         {Addresserror && <p className="error-message">{Addresserror}</p>}
 
                     </div>
 
                     <div>
                         <label htmlFor="pincode">Enter Your Pincode</label>
-                        <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => { setPincode(e.target.value); validatepincode(e.target.value) }} />
+                        <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => { setPincode(e.target.value); validatepincode(e.target.value) }} required/>
                         {pincodeerror && <p className="error-message">{pincodeerror}</p>}
 
                     </div>

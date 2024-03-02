@@ -23,12 +23,12 @@ function Listusers() {
         fetchData();
     }, []);
   
-    const HandleViewUser = (userId, data) => {
+    const HandleViewUser = (userId) => {
         if (userId !== undefined) {
             console.log("View button clicked for user ID:", userId);
+
         } else {
             console.error("User ID is undefined");
-            console.log("Data:", data);
         }
     };
 
