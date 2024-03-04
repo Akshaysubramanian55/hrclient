@@ -12,14 +12,14 @@
    color:rgb(0, 0, 0);
    width: 30vw;
    height: 80vh;
-   background-color: lightgreen;
+   background-color: #A0C8FE;
    
  
 
 }
 .formss label {
     display: block;
-    padding: 40px ;
+    /* padding: 40px ; */
    margin-bottom: 3px;
 }
 .formss input{
@@ -41,4 +41,28 @@ height: 80vh;
 .imagee img{
     height: 80%;
     margin-top: 150px;
+}
+.buttonss{
+    display: flex;
+    
+    
+}
+.button1{
+    margin-right: 20px;
+}
+.button1 button:hover{
+    background-color: red;
+    color: white;
+}
+.button2 button:hover{
+    background-color: red;
+    color: white;
+}
+.button1 button:active{
+    background-color: green;
+    color: white;
+}
+.button2 button:active{
+    background-color: green;
+    color: white;
 }

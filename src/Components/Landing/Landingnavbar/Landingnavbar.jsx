@@ -1,9 +1,9 @@
 import React from "react";
-
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './Landingnavbar.css'
 
-function Landingnavbar(){
-    return(
+function Landingnavbar() {
+    return (
         <>
             <nav>
                 <div className="listnav">
@@ -13,9 +13,10 @@ function Landingnavbar(){
                         <li>About Us</li>
                         <li>Contact</li>
                         <li>Services</li>
+                        <li><button><Link to={"/login"}>Login</Link></button></li>
                     </ul>
 
-                   
+
                 </div>
             </nav>
         </>

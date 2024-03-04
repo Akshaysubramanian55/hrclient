@@ -1,10 +1,11 @@
 .listnav,ul{
     display: flex;
-    padding: 0px 20px 0px 20px;
+    /* padding: 0px 20px 0px 20px; */
+  
 }
 .listnav ul,li {
   list-style-type: none;
-  padding: 2px 40px 0px 40px;
+  /* padding: 2px 40px 0px 40px; */
 }
 nav{
     border: solid 1px black;

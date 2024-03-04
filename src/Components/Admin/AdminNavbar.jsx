@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-
 
 import './AdminNavbar.css'
 
-function AdminNavbar(){
-    return(
+function AdminNavbar() {
+    return (
         <>
             <nav>
                 <div className="listnav">
@@ -14,11 +14,21 @@ function AdminNavbar(){
                         <li>About Us</li>
                         <li>Contact</li>
                         <li>Services</li>
-                        <li><Link to="/adduser"><button type="submit">Add</button></Link></li>
-                        <li><Link to="/getuser"><button type="submit">Users</button></Link></li>
-                    </ul>
 
-                   
+                    </ul>
+                    <div className="buttonss">
+                        <div className="button1">
+                        <Link to="/adduser"><button type="submit">Add</button></Link>
+                        </div>
+                        <div className="button2">
+                        <Link to="/getuser"><button type="submit">Users</button></Link>
+
+                        </div>
+                        
+                    </div>
+
+
+
                 </div>
             </nav>
         </>

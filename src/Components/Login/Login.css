@@ -8,16 +8,16 @@
 
 }
 
-.loginimage {
+/* .loginimage {
     background-color: black;
-}
+} */
 
 .loginimage img {
     margin-top: 100px;
 }
 
 .logindataa {
-    background-color:yellow ;
+    background-color:#317FEB ;
     padding-top: 200px;
     height: 80vh;
     width: 80%;

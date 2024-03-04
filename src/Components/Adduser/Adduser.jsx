@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
+
 import mydraw from '../Adduser/images/backkk.avif'
 import './Adduser.css'
 
@@ -27,7 +29,7 @@ function Adduser() {
 
 
     const validatename = (value) => {
-        const nameRegex = /^[a-z]{6}$/i;
+        const nameRegex = /^[a-z]{6,}$/i;
         if (!value) {
             setNameerror('enter Name')
         } else if (!nameRegex.test(value)) {
@@ -117,12 +119,7 @@ function Adduser() {
             console.log('Response received:', response);
 
 
-            if (response.data) {
-
-                alert(response.data.message);
-            } else {
-                alert(response.data.message);
-            }
+            
         } catch (error) {
             console.error('Adding user failed:', error);
             alert(' failed. Please try again later.')
@@ -147,19 +144,19 @@ function Adduser() {
                     <div>
 
                         <label htmlFor="email">Enter your Email</label>
-                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} required/>
+                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} required />
                         {emailerror && <p className="error-message">{emailerror}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="password">Enter Your Password</label>
-                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} required/>
+                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} required />
                         {passworderror && <p className="error-message">{passworderror}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="phonenumber">Enter Your Phone Number</label>
-                        <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} required/>
+                        <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} required />
 
                         {phonenumbererror && <p className="error-message">{phonenumbererror}</p>}
 
@@ -170,14 +167,14 @@ function Adduser() {
 
 
                         <label htmlFor="address">Enter Your Address</label>
-                        <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) => { setAddress(e.target.value); validateAddress(e.target.value) }} required/>
+                        <input type="address" placeholder="Enter Your Address" name="Address" value={Address} onChange={(e) => { setAddress(e.target.value); validateAddress(e.target.value) }} required />
                         {Addresserror && <p className="error-message">{Addresserror}</p>}
 
                     </div>
 
                     <div>
                         <label htmlFor="pincode">Enter Your Pincode</label>
-                        <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => { setPincode(e.target.value); validatepincode(e.target.value) }} required/>
+                        <input type="pincode" placeholder="Enter Your pincode" name="pincode" value={pincode} onChange={(e) => { setPincode(e.target.value); validatepincode(e.target.value) }} required />
                         {pincodeerror && <p className="error-message">{pincodeerror}</p>}
 
                     </div>
@@ -186,7 +183,7 @@ function Adduser() {
 
 
                     <div className='centre'>
-                        <button type="submit" >Add User</button>
+                        <Link to="/getuser"> <button type="submit" onClick={handleAdduser}>Add User</button></Link>
                     </div>
 
 

@@ -1,62 +1,88 @@
-
-.header{
-color:black;
- padding: 10px;
+.header {
+    color: black;
+    padding: 10px;
 }
-.box,p{
+
+.box,
+p {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 40px;
-   
-}
-.box p{
-    
-    width: 300px;
-   color:black;
 
-  
-   
 }
-.box1{
+
+.box p {
+
+    width: 300px;
+    color: black;
+    padding: 20px;
+
+
+
+}
+.box p input{
+    padding: 10px;
+}
+
+.box1 {
     display: flex;
     /* justify-content: center;
     align-items: center;
      */
 }
-.box2{
+
+.box2 {
     display: flex;
     /* justify-content: center;
     align-items: center;
      */
 }
-.box3{
+
+.box3 {
     display: flex;
     /* justify-content: center;
     align-items: center; */
-    padding-right: 20px;
-    
-}
-.labels{
-    display: flex;
-   
-}
-.labels h1{
-    padding: 20px 0 10px 230px;
-    color: black;
-}
-.box1 img{
- width: 40px;
- margin-top: 20px;
-}
-.box2  img{
-    width: 30px;
-}
-.box3 img{
-    width: 30px;
-    margin-left: 60px;
-   
+    /* padding-right: 20px; */
+
 }
 
- 
- 
+.labels {
+    display: flex;
+   /* width: 0px; */
+
+}
+
+.labels h1 {
+    padding: 20px 0 10px 210px;
+    color: black;
+}
+
+.box1 img {
+    width: 40px;
+    margin-top: 20px;
+}
+
+.box2 img {
+    width: 30px;
+}
+
+.box3 img {
+    width: 30px;
+    margin-left: 60px;
+
+}
+
+.box button {
+    padding: 5px;
+}
+
+.box button:hover {
+    background-color: red;
+    color: white;
+}
+
+.box button:active {
+    background-color: green;
+    color: white;
+}

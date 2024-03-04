@@ -50,15 +50,15 @@ function Listusers() {
                         <div className="box" key={user._id}>
                             <div className="box1">
                                 <img src={myImage} alt="#" />
-                                <p> {user.name}</p>
+                                <p> <input type="text" defaultValue={user.name} /></p>
                             </div>
                             <div className="box2">
                                 <img src={myMail} alt="#" />
-                                <p> {user.email}</p>
+                                <p> <input type="email" defaultValue={user.email}/></p>
                             </div>
                             <div className="box3">
                                 <img src={myPhone} alt="#" />
-                                <p> {user.phonenumber}</p>
+                                <p> <input type="phonenumber" defaultValue={user.phonenumber} /></p>
                             </div>
                             <div>
                               <Link to={`/detailsuser/${user._id}`}><button onClick={() => HandleViewUser(user._id)}>View</button></Link>  

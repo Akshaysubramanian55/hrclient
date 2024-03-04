@@ -1,10 +1,10 @@
-.listnav,ul{
+/* .listnav,ul,li{
     display: flex;
     padding: 0px 20px 0px 20px;
-}
+} */
 .listnav ul,li {
   list-style-type: none;
-  padding: 10px 40px 0px 40px;
+  padding: 10px 20px 0px 20px;
 }
 nav{
     border: solid 1px black;
@@ -13,4 +13,7 @@ nav{
     height: 8vh;
    
    
+}
+.button1{
+  margin-left: 5px;
 }
