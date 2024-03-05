@@ -24,9 +24,13 @@
 }
 .formss input{
     margin-top: 5px;
-    width:  200px;
+    width:  250px;
     height: 30px;
     margin-bottom: 5px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0px 20px;
+    border: none;
 }
 .formss button{
     margin-top: 10px;

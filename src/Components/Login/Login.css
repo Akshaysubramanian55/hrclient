@@ -5,39 +5,45 @@
 .loginimage img {
     width: 100%;
     height: 50%;
-
-}
-
-/* .loginimage {
-    background-color: black;
-} */
-
-.loginimage img {
     margin-top: 100px;
 }
 
+
+
+
+
 .logindataa {
-    background-color:#317FEB ;
-    padding-top: 200px;
     height: 80vh;
     width: 80%;
+    background-color: #317FEB;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+    /* padding-top: 200px; */
+   
+}
+.logindataa h2{
+    font-size: normal;
+    margin-bottom: 60px;
 }
 
-.landinglogins {
-    margin: auto;
-}
 
-.landinglogins label,
-button {
+.landinglogins label,button
+{
     display: block;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-top: 10px;
 
 }
 
 .landinglogins input {
-    margin-bottom: 20px;
-    padding: 10px;
+    background: rgba(255, 255,255, 0.8);
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0px 20px;
+    border: none;
 }
 
 .centre {
