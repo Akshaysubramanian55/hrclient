@@ -115,8 +115,37 @@ function Adduser() {
                 },
                 body: json_data,
             });
+            const responseData = await response.json();
+            if (responseData.errors) {
 
-            console.log('Response received:', response);
+                if(responseData.errors.name||responseData.errors.name_empty){
+                    setNameerror(responseData.errors.name_empty||responseData.errors.name)
+                }
+                
+                if(responseData.errors.email||responseData.errors.email_empty){
+                    setEmailerror(responseData.errors.email_empty||responseData.errors.email)
+                }
+
+                if(responseData.errors.password_empty){
+                    setPassworderror(responseData.errors.password_empty)
+                }
+
+
+                if(responseData.errors.phonenumber||responseData.errors.phonenumber_empty){
+                    setPhonenumbererror(responseData.errors.phonenumber_empty||responseData.errors.phonenumber)
+                }
+
+                if(responseData.errors.Address_empty){
+                    setAddresserror(responseData.errors.Address_empty)
+                }
+
+                if(responseData.errors.pincode||responseData.errors.pincode_empty){
+                    setPincodeerror(responseData.errors.pincode_empty||responseData.errors.pincode)
+                    // `Validation error:\n${validationErrors}`
+                }
+            } else {
+                alert(responseData.message);
+            }
 
 
             
@@ -183,7 +212,7 @@ function Adduser() {
 
 
                     <div className='centre'>
-                        <Link to="/getuser"> <button type="submit" onClick={handleAdduser}>Add User</button></Link>
+                         <button type="submit" onClick={handleAdduser}>Add User</button>
                     </div>
 
 

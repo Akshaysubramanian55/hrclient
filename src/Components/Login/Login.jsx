@@ -35,6 +35,19 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!email || !password) {
+        if (!email) {
+            setEmailerror('Please enter your email');
+        }
+        if (!password) {
+            setPassworderror('Please enter your password');
+        }
+        return;
+    }
+    if (emailerror || passworderror) {
+        return;
+    }
         try {
             const response = await axios.post('http://localhost:3100/login', {
                 email: email,
@@ -44,7 +57,11 @@ function Login() {
                 headers: {
                     'Content-Type': 'application/json'
                 }
+               
             });
+
+
+
 
 
 
