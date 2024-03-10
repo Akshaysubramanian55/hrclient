@@ -74,8 +74,9 @@ function Login() {
                 alert(response.data.message);
             }
         } catch (error) {
-            console.error('Login failed:', error);
-            alert('Login failed. Please try again later.');
+            
+                alert('Invalid email or password. Please try again.');
+            
         }
     };
 

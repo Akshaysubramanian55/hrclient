@@ -1,9 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useParams} from 'react-router-dom';
+import {  useNavigate  } from 'react-router-dom';
+
 
 import './AdminNavbar.css'
 
 function AdminNavbar() {
+
+    const navigate = useNavigate(); // Hook for navigation
+
+    const handleLogout = () => {
+      // Perform logout actions
+      // For example, clearing session, etc.
+      navigate('/login'); // Navigate to the login page
+    };
     return (
         <>
             <nav>
@@ -24,6 +34,9 @@ function AdminNavbar() {
                         <Link to="/getuser"><button type="submit">Users</button></Link>
 
                         </div>
+                        <div className="button3">
+                            <button onClick={handleLogout}>Log Out</button>
+                        </div>
                         
                     </div>
 
@@ -34,6 +47,7 @@ function AdminNavbar() {
         </>
     )
 }
+
 
 
 export default AdminNavbar;
