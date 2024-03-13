@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
-
+import Login from "../Login/Login";
 import mydraw from '../Adduser/images/backkk.avif'
 import './Adduser.css'
+import axios from "axios";
 
 function Adduser() {
     const [name, setName] = useState('');
@@ -26,6 +27,17 @@ function Adduser() {
 
     const [pincode, setPincode] = useState('');
     const [pincodeerror, setPincodeerror] = useState('');
+
+    const [token,setToken]=useState('')
+
+    useEffect(()=>{
+
+        const storedToken=localStorage.getItem('token');
+
+        if(storedToken){
+            setToken(storedToken);
+        }
+    },[]);
 
 
     const validatename = (value) => {
@@ -108,9 +120,11 @@ function Adduser() {
             const json_data = JSON.stringify(data);
             console.log("json_data : ", json_data)
 
-            const response = await fetch('http://localhost:3100/adduser', {
+
+            const response = await axios.post('http://localhost:3100/adduser', {
                 method: 'POST',
                 headers: {
+                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
                 body: json_data,
@@ -144,7 +158,11 @@ function Adduser() {
                     // `Validation error:\n${validationErrors}`
                 }
             } else {
-                alert(responseData.message);
+                swal.fire({
+                    icon:"error",
+                    title:"error",
+                    text:"invalid email or password"
+                })
             }
 
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import myDraw2 from '../Login/images/draw2.webp'
 import './Login.css';
+import swal from 'sweetalert2';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -68,15 +69,30 @@ function Login() {
             if (response.data.success) {
                 const token = response.data.data;
                 localStorage.setItem('token', token);
-                navigate('/admin');
-                alert(response.data.message);
+                
+                swal.fire({
+                    icon:"success",
+                    title:"Success",
+                    text:response.data.message
+                }).then(()=>{
+                    navigate('/admin');
+                })
+
+               
             } else {
-                alert(response.data.message);
+                swal.fire({
+                    icon:"error",
+                    title:"error",
+                    text:"invalid email or password"
+                })
             }
         } catch (error) {
             
-                alert('Invalid email or password. Please try again.');
-            
+            swal.fire({
+                icon:"error",
+                title:"error",
+                text:"invalid email or password"
+            })
         }
     };
 

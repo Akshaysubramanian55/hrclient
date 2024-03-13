@@ -11,17 +11,41 @@ import myPhone from '../Listusers/images/icons8-phone-50.png'
 function Listusers() {
     const [data, setData] = useState([]);
 
+    const [token,setToken]=useState('')
+
+    useEffect(()=>{
+
+        const storedToken=localStorage.getItem('token');
+
+        if(storedToken){
+            setToken(storedToken);
+        }
+
+        console.log(token)
+    },[]);
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3100/getuser');
+                const response = await axios.get('http://localhost:3100/getuser',{
+                  
+                    headers: {
+                         'Authorization': `Bearer ${token}`,
+                       
+                    },
+                   
+                });
                 setData(response.data.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-        fetchData();
-    }, []);
+        if(token){
+            fetchData();
+        }
+       
+    }, [token]);
   
     const HandleViewUser = (userId) => {
         if (userId !== undefined) {
