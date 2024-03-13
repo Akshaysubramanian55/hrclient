@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
 import Login from "../Login/Login";
+import swal from 'sweetalert2';
+
 import mydraw from '../Adduser/images/backkk.avif'
 import './Adduser.css'
 import axios from "axios";
@@ -28,16 +30,17 @@ function Adduser() {
     const [pincode, setPincode] = useState('');
     const [pincodeerror, setPincodeerror] = useState('');
 
-    const [token,setToken]=useState('')
+    const [token, setToken] = useState('')
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        const storedToken=localStorage.getItem('token');
+        const storedToken = localStorage.getItem('token');
+        // console.log("Stored Token:", storedToken);
 
-        if(storedToken){
+        if (storedToken) {
             setToken(storedToken);
         }
-    },[]);
+    }, []);
 
 
     const validatename = (value) => {
@@ -113,63 +116,75 @@ function Adduser() {
 
 
     const handleAdduser = async (e) => {
-
+        e.preventDefault();
         try {
 
             const data = { name, email, password, phonenumber, Address, pincode };
             const json_data = JSON.stringify(data);
             console.log("json_data : ", json_data)
 
+            console.log("Token:", token);
 
-            const response = await axios.post('http://localhost:3100/adduser', {
-                method: 'POST',
+            const response = await axios.post('http://localhost:3100/adduser', json_data, {
+
                 headers: {
-                     'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
                 body: json_data,
             });
-            const responseData = await response.json();
+
+
+            const responseData =  response.data;
+            console.log(responseData)
             if (responseData.errors) {
 
-                if(responseData.errors.name||responseData.errors.name_empty){
-                    setNameerror(responseData.errors.name_empty||responseData.errors.name)
-                }
-                
-                if(responseData.errors.email||responseData.errors.email_empty){
-                    setEmailerror(responseData.errors.email_empty||responseData.errors.email)
+                if (responseData.errors.name || responseData.errors.name_empty) {
+                    setNameerror(responseData.errors.name_empty || responseData.errors.name)
                 }
 
-                if(responseData.errors.password_empty){
+                if (responseData.errors.email || responseData.errors.email_empty) {
+                    setEmailerror(responseData.errors.email_empty || responseData.errors.email)
+                }
+
+                if (responseData.errors.password_empty) {
                     setPassworderror(responseData.errors.password_empty)
                 }
 
 
-                if(responseData.errors.phonenumber||responseData.errors.phonenumber_empty){
-                    setPhonenumbererror(responseData.errors.phonenumber_empty||responseData.errors.phonenumber)
+                if (responseData.errors.phonenumber || responseData.errors.phonenumber_empty) {
+                    setPhonenumbererror(responseData.errors.phonenumber_empty || responseData.errors.phonenumber)
                 }
 
-                if(responseData.errors.Address_empty){
+                if (responseData.errors.Address_empty) {
                     setAddresserror(responseData.errors.Address_empty)
                 }
 
-                if(responseData.errors.pincode||responseData.errors.pincode_empty){
-                    setPincodeerror(responseData.errors.pincode_empty||responseData.errors.pincode)
+                if (responseData.errors.pincode || responseData.errors.pincode_empty) {
+                    setPincodeerror(responseData.errors.pincode_empty || responseData.errors.pincode)
                     // `Validation error:\n${validationErrors}`
-                }
-            } else {
+                } 
+
+               
+                
+            }else if(responseData.success){
+                
                 swal.fire({
-                    icon:"error",
-                    title:"error",
-                    text:"invalid email or password"
-                })
+                    icon: "success",
+                    title: "Success",
+                    text: response.message
+                });
             }
+         
 
 
-            
+
         } catch (error) {
-            console.error('Adding user failed:', error);
-            alert(' failed. Please try again later.')
+            swal.fire({
+                icon: "error",
+                title: "error",
+                text: "invalid email or password"
+            })
         }
     }
 
@@ -230,7 +245,7 @@ function Adduser() {
 
 
                     <div className='centre'>
-                         <button type="submit" onClick={handleAdduser}>Add User</button>
+                        <button type="submit" onClick={handleAdduser}>Add User</button>
                     </div>
 
 
