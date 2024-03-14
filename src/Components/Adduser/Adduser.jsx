@@ -1,13 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-router-dom';
 import Login from "../Login/Login";
-import swal from 'sweetalert2';
-
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 import mydraw from '../Adduser/images/backkk.avif'
 import './Adduser.css'
 import axios from "axios";
 
+
+
+
 function Adduser() {
+
+    const navigate=useNavigate();
+
+    const isTokenpresent = () => {
+  
+        const token = localStorage.getItem('token');
+        return !!token; 
+      };
+    
+      if (!isTokenpresent()) {
+        Swal.fire({
+            title: "Error",
+            text: "You need to login to access the aduser area.",
+            icon: "error",
+            button: "Login",
+        }).then(() => {
+            navigate('/login');
+        });
+        return null;
+       
+    }
     const [name, setName] = useState('');
     const [nameerror, setNameerror] = useState('');
 
