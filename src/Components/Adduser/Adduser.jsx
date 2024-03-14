@@ -39,8 +39,8 @@ function Adduser() {
     const [email, setEmail] = useState('')
     const [emailerror, setEmailerror] = useState('')
 
-    const [password, setPassword] = useState('');
-    const [passworderror, setPassworderror] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [passworderror, setPassworderror] = useState('');
 
 
     const [phonenumber, setPhonenumber] = useState('');
@@ -53,6 +53,7 @@ function Adduser() {
 
     const [pincode, setPincode] = useState('');
     const [pincodeerror, setPincodeerror] = useState('');
+    const [generatedPassword, setGeneratedPassword] = useState('');
 
     const [token, setToken] = useState('')
 
@@ -89,17 +90,17 @@ function Adduser() {
         }
     }
 
-    const validatepassword = (value) => {
-        const passwordRegex = /^.{6,}$/
+    // const validatepassword = (value) => {
+    //     const passwordRegex = /^.{6,}$/
 
-        if (!value) {
-            setPassworderror('Enter your password')
-        } else if (!passwordRegex.test(value)) {
-            setPassworderror('Enter Valid Password')
-        } else {
-            setPassworderror('')
-        }
-    }
+    //     if (!value) {
+    //         setPassworderror('Enter your password')
+    //     } else if (!passwordRegex.test(value)) {
+    //         setPassworderror('Enter Valid Password')
+    //     } else {
+    //         setPassworderror('')
+    //     }
+    // }
 
     const validatephonenumber = (value) => {
         const phoneRegex = /^[0-9]{10}$/
@@ -143,7 +144,7 @@ function Adduser() {
         e.preventDefault();
         try {
 
-            const data = { name, email, password, phonenumber, Address, pincode };
+            const data = { name, email, phonenumber, Address, pincode };
             const json_data = JSON.stringify(data);
             console.log("json_data : ", json_data)
 
@@ -171,9 +172,9 @@ function Adduser() {
                     setEmailerror(responseData.errors.email_empty || responseData.errors.email)
                 }
 
-                if (responseData.errors.password_empty) {
-                    setPassworderror(responseData.errors.password_empty)
-                }
+                // if (responseData.errors.password_empty) {
+                //     setPassworderror(responseData.errors.password_empty)
+                // }
 
 
                 if (responseData.errors.phonenumber || responseData.errors.phonenumber_empty) {
@@ -192,8 +193,9 @@ function Adduser() {
                
                 
             }else if(responseData.success){
-                
-                swal.fire({
+                const passwordFromServer = response.data.password;
+                setGeneratedPassword(passwordFromServer);
+                Swal.fire({
                     icon: "success",
                     title: "Success",
                     text: response.message
@@ -204,7 +206,7 @@ function Adduser() {
 
 
         } catch (error) {
-            swal.fire({
+            Swal.fire({
                 icon: "error",
                 title: "error",
                 text: "invalid email or password"
@@ -234,12 +236,7 @@ function Adduser() {
                         {emailerror && <p className="error-message">{emailerror}</p>}
                     </div>
 
-                    <div>
-                        <label htmlFor="password">Enter Your Password</label>
-                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} required />
-                        {passworderror && <p className="error-message">{passworderror}</p>}
-                    </div>
-
+                   
                     <div>
                         <label htmlFor="phonenumber">Enter Your Phone Number</label>
                         <input type="phonenumber" placeholder="Enter Your Phone Number" name="phonenumber" value={phonenumber} onChange={(e) => { setPhonenumber(e.target.value); validatephonenumber(e.target.value) }} required />
@@ -275,6 +272,7 @@ function Adduser() {
 
 
                 </form>
+                {generatedPassword && <p>Password generated: {generatedPassword}</p>}
             </div>
             <div className="mydraw">
                 <img src={mydraw} alt="#" />
