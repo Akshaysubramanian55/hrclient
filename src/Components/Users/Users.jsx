@@ -2,15 +2,15 @@ import React from "react";
 
 return (
 
-    <div>
+    <div className="container">
 
-        <div>
+        <div className="header">
             <h1>Hello</h1>
         </div>
-        <div>
-            <p>This is your profile page.</p>
+        <div className="details">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam fugiat reprehenderit mollitia veritatis delectus eius dolores voluptates blanditiis cupiditate dolorem.</p>
         </div>
-        <div>
+        <div className="editt">
             <button>Edit Profile</button>
         </div>
     </div>

@@ -6,11 +6,12 @@ import './Listuser.css';
 import myImage from '../Listusers/images/icons8-male-user-50.png'
 import myMail from '../Listusers/images/icons8-mail-50.png'
 import myPhone from '../Listusers/images/icons8-phone-50.png'
+import Spinner from "../Spinner/Spinner";
 
 
 function Listusers() {
     const [data, setData] = useState([]);
-
+    const [loading,setLoading]=useState(true)
     const [token,setToken]=useState('')
 
     useEffect(()=>{
@@ -37,6 +38,7 @@ function Listusers() {
                    
                 });
                 setData(response.data.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -69,34 +71,30 @@ function Listusers() {
                     <h1>Email</h1>
                     <h1 className="phone">Phone Number</h1>
                 </div>
-                {data.length ? (
-                    data.map((user) => (
-                        <div className="box" key={user._id}>
-                            <div className="box1">
-                                <img src={myImage} alt="#" />
-                                <p> <input type="text" defaultValue={user.name} /></p>
-                            </div>
-                            <div className="box2">
-                                <img src={myMail} alt="#" />
-                                <p> <input type="email" defaultValue={user.email}/></p>
-                            </div>
-                            <div className="box3">
-                                <img src={myPhone} alt="#" />
-                                <p> <input type="phonenumber" defaultValue={user.phonenumber} /></p>
-                            </div>
-                            <div>
-                              <Link to={`/detailsuser/${user._id}`}><button onClick={() => HandleViewUser(user._id)}>View</button></Link>  
-
-                            </div>
-
-
+                
+                {loading ? ( // Display spinner if loading is true
+                <Spinner />
+            ) : (
+                data.map((user) => (
+                    <div className="box" key={user._id}>
+                        <div className="box1">
+                            <img src={myImage} alt="#" />
+                            <p><input type="text" defaultValue={user.name} /></p>
                         </div>
-                    ))
-                ) : (
-                    <h1>Loading....</h1>
-                )}
-           
-
+                        <div className="box2">
+                            <img src={myMail} alt="#" />
+                            <p><input type="email" defaultValue={user.email} /></p>
+                        </div>
+                        <div className="box3">
+                            <img src={myPhone} alt="#" />
+                            <p><input type="phonenumber" defaultValue={user.phonenumber} /></p>
+                        </div>
+                        <div>
+                            <Link to={`/detailsuser/${user._id}`}><button onClick={() => HandleViewUser(user._id)}>View</button></Link>
+                        </div>
+                    </div>
+                ))
+            )}
         </>
     );
 }
