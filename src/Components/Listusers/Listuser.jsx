@@ -11,44 +11,54 @@ import Spinner from "../Spinner/Spinner";
 
 function Listusers() {
     const [data, setData] = useState([]);
-    const [loading,setLoading]=useState(true)
-    const [token,setToken]=useState('')
+    const [loading, setLoading] = useState(true);
+    const [currentpage, setCurrentpage] = useState(1);
+    const [itemsperpage] = useState(5);
+    const [totalPages, setTotalPages] = useState(1);
+    const [token, setToken] = useState('');
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        const storedToken=localStorage.getItem('token');
+        const storedToken = localStorage.getItem('token');
 
-        if(storedToken){
+        if (storedToken) {
             setToken(storedToken);
         }
 
         console.log(token)
-    },[]);
+    }, []);
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3100/getuser',{
-                  
-                    headers: {
-                         'Authorization': `Bearer ${token}`,
-                       
+                const response = await axios.get('http://localhost:3100/getuser', {
+
+                    params: {
+                        page: currentpage,
+                        limit: itemsperpage,
                     },
-                   
+
+
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+
+                    },
+
                 });
                 setData(response.data.data);
+                setTotalPages(response.data.totalPages);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-        if(token){
+        if (token) {
             fetchData();
         }
-       
-    }, [token]);
-  
+
+    }, [token, currentpage, itemsperpage]);
+
     const HandleViewUser = (userId) => {
         if (userId !== undefined) {
             console.log("View button clicked for user ID:", userId);
@@ -58,21 +68,33 @@ function Listusers() {
         }
     };
 
+    const nextPage = () => {
+        if (currentpage < totalPages) {
+            setCurrentpage(currentpage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentpage > 1) {
+            setCurrentpage(currentpage - 1);
+        }
+    };
+
 
     return (
         <>
 
 
-                <div className="header">
-                    <h1>Users</h1>
-                </div>
-                <div className="labels">
-                    <h1>Name</h1>
-                    <h1>Email</h1>
-                    <h1 className="phone">Phone Number</h1>
-                </div>
-                
-                {loading ? ( // Display spinner if loading is true
+            <div className="header">
+                <h1>Users</h1>
+            </div>
+            <div className="labels">
+                <h1>Name</h1>
+                <h1>Email</h1>
+                <h1 className="phone">Phone Number</h1>
+            </div>
+
+            {loading ? ( // Display spinner if loading is true
                 <Spinner />
             ) : (
                 data.map((user) => (
@@ -95,6 +117,12 @@ function Listusers() {
                     </div>
                 ))
             )}
+
+            <div className="pagination">
+            <button onClick={prevPage} disabled={currentpage === 1}>Prev</button>
+                        <span>{currentpage} of {totalPages}</span>
+                        <button onClick={nextPage} disabled={currentpage === totalPages}>Next</button>
+            </div>
         </>
     );
 }
