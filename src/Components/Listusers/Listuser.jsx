@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-
 
 import axios from 'axios';
 import './Listuser.css';
-import myImage from '../Listusers/images/icons8-male-user-50.png'
-import myMail from '../Listusers/images/icons8-mail-50.png'
-import myPhone from '../Listusers/images/icons8-phone-50.png'
+// import myImage from '../Listusers/images/icons8-male-user-50.png'
+// import myMail from '../Listusers/images/icons8-mail-50.png'
+// import myPhone from '../Listusers/images/icons8-phone-50.png'
 import Spinner from "../Spinner/Spinner";
 
 
@@ -88,40 +88,41 @@ function Listusers() {
             <div className="header">
                 <h1>Users</h1>
             </div>
-            <div className="labels">
-                <h1>Name</h1>
-                <h1>Email</h1>
-                <h1 className="phone">Phone Number</h1>
-            </div>
+            {/* <div className="labels">
+                <div className="label">
+                    <h2>Name</h2>
+                </div>
+                <div className="label">
+                    <h2>Email</h2>
+                </div>
+                <div className="label phone">
+                    <h2>Phone Number</h2>
+                </div>
+            </div> */}
 
             {loading ? ( // Display spinner if loading is true
                 <Spinner />
             ) : (
                 data.map((user) => (
-                    <div className="box" key={user._id}>
-                        <div className="box1">
-                            <img src={myImage} alt="#" />
-                            <p><input type="text" defaultValue={user.name} /></p>
-                        </div>
-                        <div className="box2">
-                            <img src={myMail} alt="#" />
-                            <p><input type="email" defaultValue={user.email} /></p>
-                        </div>
-                        <div className="box3">
-                            <img src={myPhone} alt="#" />
-                            <p><input type="phonenumber" defaultValue={user.phonenumber} /></p>
-                        </div>
-                        <div>
-                            <Link to={`/detailsuser/${user._id}`}><button onClick={() => HandleViewUser(user._id)}>View</button></Link>
-                        </div>
+                    <div className="user-card" key={user._id}>
+                    <div className="user-info">
+                        <h3>{user.name}</h3>
+                        <p>{user.email}</p>
+                        <p>{user.phonenumber}</p>
                     </div>
+                    <div className="action-button">
+                        <Link to={`/detailsuser/${user._id}`}>
+                            <button onClick={() => handleViewUser(user._id)}>View</button>
+                        </Link>
+                    </div>
+                </div>
                 ))
             )}
 
             <div className="pagination">
-            <button onClick={prevPage} disabled={currentpage === 1}>Prev</button>
-                        <span>{currentpage} of {totalPages}</span>
-                        <button onClick={nextPage} disabled={currentpage === totalPages}>Next</button>
+                <button onClick={prevPage} disabled={currentpage === 1}>Prev</button>
+                <span>{currentpage} of {totalPages}</span>
+                <button onClick={nextPage} disabled={currentpage === totalPages}>Next</button>
             </div>
         </>
     );

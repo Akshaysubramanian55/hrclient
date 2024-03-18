@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useParams, } from 'react-
 import Admin from './Components/Admin/Admin'
 import Listusers from './Components/Listusers/Listuser'
 import Userdetails from './Components/Userdetails/Userdetails'
+import Resetpassword from './Components/Resetpassword/Resetpassword'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/admin'    exact element={<Admin/>}/>
           <Route path='/getuser'    exact element={<Listusers/>}/>
           <Route path='/detailsuser/:userId' exact element={<Userdetails/>}/>
+          <Route path='/reset-password' exact element={<Resetpassword/>}/>
         </Routes>
 
 
