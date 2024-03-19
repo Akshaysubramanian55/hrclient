@@ -9,7 +9,7 @@ import Listusers from './Components/Listusers/Listuser'
 import Userdetails from './Components/Userdetails/Userdetails'
 import Resetpassword from './Components/Resetpassword/Resetpassword'
 import ForgotPassword from './Components/Forgotpassword/Forgotpassword'
-
+import ChangePassword from './Components/Changepassword/Changepassword'
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
           <Route path='/detailsuser/:userId' exact element={<Userdetails/>}/>
           <Route path='/reset-password' exact element={<Resetpassword/>}/>
           <Route path='/forgotpassword' exact element={<ForgotPassword/>}/>
-
+          <Route path='/change-password' exact element={<ChangePassword/>}/>
         </Routes>
 
 

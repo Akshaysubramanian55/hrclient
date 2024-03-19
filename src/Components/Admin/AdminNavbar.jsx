@@ -34,6 +34,9 @@ function AdminNavbar() {
                         <Link to="/getuser"><button type="submit">Users</button></Link>
 
                         </div>
+                        <div>
+                            <Link to="/change-password"><button>Change Password</button></Link>
+                        </div>
                         <div className="button3">
                             <button onClick={handleLogout}>Log Out</button>
                         </div>
