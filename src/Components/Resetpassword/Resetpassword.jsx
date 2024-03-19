@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 import './Resetpassword.css'
 
 function Resetpassword() {
@@ -7,6 +7,14 @@ function Resetpassword() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const[token,setToken]=useState("")
+
+   useEffect(()=>{
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    setToken(token);
+   },[])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -17,26 +25,23 @@ function Resetpassword() {
         }
 
         try {
-            // Call your backend API to reset password here
-            const response = await fetch('/reset-password', {
-                method: 'PATCH',
+            
+            const response = await axios.patch('http://localhost:3100/reset-password',{password}, {
+               
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${reset_token}` // Replace with actual token
+                   
+                    Authorization: `Bearer ${token}` 
                 },
-                body: JSON.stringify({ password })
+               
             });
 
-            if (!response.ok) {
-                const responseData = await response.json();
-                throw new Error(responseData.message || 'Failed to reset password');
-            }
+            
 
-            // Password reset successful
-            setErrorMessage("Password reset successful");
+           
+            setErrorMessage(response.data.message);
         } catch (error) {
             console.error('Error:', error);
-            setErrorMessage("An error occurred. Please try again later.");
+            setErrorMessage("error");
         }
     };
 

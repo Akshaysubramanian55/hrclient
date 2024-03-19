@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import myDraw2 from '../Login/images/draw2.webp'
 import './Login.css';
@@ -96,40 +96,7 @@ function Login() {
         }
     };
 
-    const handleForgotPassword = async () => {
-        if (!email) {
-            setEmailerror('Please enter your email');
-            return;
-        }
-        
-        try {
-            const response = await axios.post('http://localhost:3100/reset-password', {
-                email: email,
-            });
-
-            if (response.status === 200) {
-                swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Password reset link has been sent to your email"
-                });
-            } else {
-                swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "Failed to send reset link. Please try again later."
-                });
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "Failed to send reset link. Please try again later."
-            });
-        }
-    };
-
+    
 
 
 
@@ -163,9 +130,9 @@ function Login() {
                         <button type='submit'>Login</button>
                     </div>
 
-                    <div>
-                        <button type='button' onClick={handleForgotPassword}>Forgot Password?</button>
-                    </div>
+                   <div>
+                    <Link to="/forgotpassword">Forgot password</Link>
+                   </div>
 
                 </form>
             </div>
