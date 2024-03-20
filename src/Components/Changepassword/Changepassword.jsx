@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+
 import axios from "axios";
-import "./Changepassword.css"; // Import CSS file for styling
+import "./Changepassword.css"; 
+import Swal from "sweetalert2";
+
 
 function ChangePassword() {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+
 
     const handleChangePassword = async (event) => {
         event.preventDefault();
@@ -34,7 +40,13 @@ function ChangePassword() {
             );
 
             // Password changed successfully
-            setErrorMessage(response.data.message);
+            Swal.fire({
+                icon:"success",
+                title:"Success",
+                text:response.data.message
+            }).then(()=>{
+                navigate('/login');
+            })
         } catch (error) {
             console.error('Error:', error);
             setErrorMessage("Failed to change password");

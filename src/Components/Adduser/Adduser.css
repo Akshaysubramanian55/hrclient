@@ -1,54 +1,56 @@
-
-.adddetails label {
-    display: block;
-    padding: 40px 20px 0px 40px;
-}
-
-.adddata {
-    height: 100vh;
-    color:black;
-    width:50vw;
-    background-color: #C6C5FF;
-    width: 40%;
-
-}
-
-.adddetails button {
-    margin-top: 20px;
-}
-
-.adddata h2 {
-    padding-top: 20px;
-}
-
-.adddetails input {
-    height: 30px;
-    width: 200px;
-    padding: 20px;
-    line-height: 40px;
-    border-radius: 20px;
-    padding: 0px 20px;
-    border: none;
-}
+/* Adduser.css */
 
 .dataforms {
     display: flex;
-}
-
-.adddetails {
-    margin-top: 20px;
-}
-
-.mydraw img {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .adddata {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .adddata h2 {
+    margin-bottom: 20px;
+  }
+  
+  .adddetails label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .adddetails input {
     width: 100%;
-    height: 60%;
-    margin-top: 320px;
-
-}
-.mydraw{
-    height: 100vh;
-    /* background-color: black; */
-    width: 60%;
-}
-
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  .centre {
+    text-align: center;
+  }
+  
+  .centre button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .centre button:hover {
+    background-color: #0056b3;
+  }
+  
+  .mydraw img {
+    max-width: 100%;
+    height: auto;
+  }
+  
 

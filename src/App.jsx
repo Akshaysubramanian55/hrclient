@@ -25,7 +25,7 @@ function App() {
           <Route path='/detailsuser/:userId' exact element={<Userdetails/>}/>
           <Route path='/reset-password' exact element={<Resetpassword/>}/>
           <Route path='/forgotpassword' exact element={<ForgotPassword/>}/>
-          <Route path='/change-password' exact element={<ChangePassword/>}/>
+          <Route path='/changepassword' exact element={<ChangePassword/>}/>
         </Routes>
 
 

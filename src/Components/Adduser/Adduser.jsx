@@ -90,17 +90,7 @@ function Adduser() {
         }
     }
 
-    // const validatepassword = (value) => {
-    //     const passwordRegex = /^.{6,}$/
-
-    //     if (!value) {
-    //         setPassworderror('Enter your password')
-    //     } else if (!passwordRegex.test(value)) {
-    //         setPassworderror('Enter Valid Password')
-    //     } else {
-    //         setPassworderror('')
-    //     }
-    // }
+   
 
     const validatephonenumber = (value) => {
         const phoneRegex = /^[0-9]{10}$/
@@ -172,10 +162,7 @@ function Adduser() {
                     setEmailerror(responseData.errors.email_empty || responseData.errors.email)
                 }
 
-                // if (responseData.errors.password_empty) {
-                //     setPassworderror(responseData.errors.password_empty)
-                // }
-
+                
 
                 if (responseData.errors.phonenumber || responseData.errors.phonenumber_empty) {
                     setPhonenumbererror(responseData.errors.phonenumber_empty || responseData.errors.phonenumber)
