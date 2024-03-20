@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import myDraw2 from '../Login/images/draw2.webp'
 import './Login.css';
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -38,27 +38,28 @@ function Login() {
         e.preventDefault();
 
         if (!email || !password) {
-        if (!email) {
-            setEmailerror('Please enter your email');
+            if (!email) {
+                setEmailerror('Please enter your email');
+            }
+            if (!password) {
+                setPassworderror('Please enter your password');
+            }
+            return;
         }
-        if (!password) {
-            setPassworderror('Please enter your password');
+        if (emailerror || passworderror) {
+            return;
         }
-        return;
-    }
-    if (emailerror || passworderror) {
-        return;
-    }
         try {
             const response = await axios.post('http://localhost:3100/login', {
                 email: email,
-                password: password
+                password: password,
+
             }, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 }
-               
+
             });
 
 
@@ -67,81 +68,93 @@ function Login() {
 
 
             if (response.data.success) {
-                const token = response.data.data;
-                localStorage.setItem('token', token);
-                
-                swal.fire({
-                    icon:"success",
-                    title:"Success",
-                    text:response.data.message
-                }).then(()=>{
-                    navigate('/admin');
-                })
 
-               
-            } else {
-                swal.fire({
-                    icon:"error",
-                    title:"error",
-                    text:"invalid email or password"
-                })
-            }
-        } catch (error) {
+                const { token, lastLogin } = response.data.data;
+                // const token = response.data.data;
+                localStorage.setItem('token', token);
+
+
+                console.log("jssjhduhs:", response.lastLogin)
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: response.data.message,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if (!lastLogin) {
+                            navigate('/changepassword');
+                        } else {
+                            navigate('/admin');
+                        }
+                    }
+                });
             
-            swal.fire({
-                icon:"error",
-                title:"error",
-                text:"invalid email or password"
+           
+
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "error",
+                text: "invalid email or password"
             })
         }
-    };
+    } catch (error) {
 
-    
-
-
-
-    return (
-
-        <div className='loginform'>
-
-            <div className='loginimage'>
-                <img src={myDraw2} alt="#" />
-            </div>
-
-            <div className='logindataa' >
-
-                <h2>Login</h2>
-                <form className='landinglogins' onSubmit={handleSubmit} >
-                    <div>
-                        <label htmlFor="name">Enter your email</label>
-                        <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} />
-
-                        {emailerror && <p className="error-message">{emailerror}</p>}
-                    </div>
-                    <div>
-                        <label htmlFor="password">Enter Your Password</label>
-                        <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} />
-                        {passworderror && <p className="error-message">{passworderror}</p>}
-                    </div>
+        Swal.fire({
+            icon: "error",
+            title: "error",
+            text: "invalid email or password"
+        })
+    }
+};
 
 
 
-                    <div className='centre'>
-                        <button type='submit'>Login</button>
-                    </div>
 
-                   <div>
+
+return (
+
+    <div className='loginform'>
+
+        <div className='loginimage'>
+            <img src={myDraw2} alt="#" />
+        </div>
+
+        <div className='logindataa' >
+
+            <h2>Login</h2>
+            <form className='landinglogins' onSubmit={handleSubmit} >
+                <div>
+                    <label htmlFor="name">Enter your email</label>
+                    <input type="email" placeholder="email" name='email' value={email} onChange={(e) => { setEmail(e.target.value); validateemail(e.target.value) }} />
+
+                    {emailerror && <p className="error-message">{emailerror}</p>}
+                </div>
+                <div>
+                    <label htmlFor="password">Enter Your Password</label>
+                    <input type="password" placeholder="Password" name='password' value={password} onChange={(e) => { setPassword(e.target.value); validatepassword(e.target.value) }} />
+                    {passworderror && <p className="error-message">{passworderror}</p>}
+                </div>
+
+
+
+                <div className='centre'>
+                    <button type='submit'>Login</button>
+                </div>
+
+                <div>
                     <Link to="/forgotpassword">Forgot password</Link>
-                   </div>
+                </div>
 
-                </form>
-            </div>
-
-
+            </form>
         </div>
 
 
-    );
+    </div>
+
+
+);
 };
 
 export default Login;
