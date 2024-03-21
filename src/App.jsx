@@ -10,6 +10,7 @@ import Userdetails from './Components/Userdetails/Userdetails'
 import Resetpassword from './Components/Resetpassword/Resetpassword'
 import ForgotPassword from './Components/Forgotpassword/Forgotpassword'
 import ChangePassword from './Components/Changepassword/Changepassword'
+import User from './Components/Users/Users'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/reset-password' exact element={<Resetpassword/>}/>
           <Route path='/forgotpassword' exact element={<ForgotPassword/>}/>
           <Route path='/changepassword' exact element={<ChangePassword/>}/>
+          <Route path='/User' exact element={<User/>}/>
         </Routes>
 
 

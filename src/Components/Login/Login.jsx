@@ -69,13 +69,20 @@ function Login() {
 
             if (response.data.success) {
 
-                const { token, lastLogin } = response.data.data;
+                const { token, lastLogin,user_type} = response.data.data;
                 // const token = response.data.data;
                 localStorage.setItem('token', token);
 
 
-                console.log("jssjhduhs:", response.lastLogin)
+            const userTypemap={
+                '65e9927f96df220728517705':'admin',
+                '65e9929396df220728517706':'employee'
+            }
 
+            const usertype=userTypemap[user_type]
+
+
+                
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
@@ -85,7 +92,8 @@ function Login() {
                         if (!lastLogin) {
                             navigate('/changepassword');
                         } else {
-                            navigate('/admin');
+                            navigate(usertype === 'admin' ? '/admin' : '/user');
+                            
                         }
                     }
                 });

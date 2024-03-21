@@ -15,7 +15,7 @@ function Admin(){
   const [loading, setLoading] = useState(true); // State to track loading status
 
   useEffect(() => {
-      // Simulating an async operation
+      
       const timeout = setTimeout(() => {
           setLoading(false); // Set loading to false after 2 seconds
       }, 2000);

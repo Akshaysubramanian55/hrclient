@@ -1,8 +1,8 @@
 import React from "react";
 
-import './Adminfooter.css';
+import './Userfooter.css';
 
-function Adminfooter(){
+function Userfooter(){
   return(
     <>
     <footer>
@@ -34,4 +34,4 @@ function Adminfooter(){
   )
 }
 
-export default Adminfooter;
+export default Userfooter;

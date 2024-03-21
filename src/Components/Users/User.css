@@ -1,14 +1,41 @@
-.header{
+/* Admin.css */
 
+.userlogin {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .userlogin .hii {
     text-align: center;
-
-}
-.container{
-    max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        
-}
+  }
+  
+  .userlogin img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .userlogin h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .userlist {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .userlist li {
+    margin-bottom: 10px;
+  }
+  
+  .query {
+    text-align: center;
+  }
+  
+  .footer {
+    margin-top: 50px;
+  }
