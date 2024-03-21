@@ -16,6 +16,9 @@ function Listusers() {
     const [itemsperpage] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
     const [token, setToken] = useState('');
+    const [keyword, setKeyword] = useState('');
+
+
 
     useEffect(() => {
 
@@ -28,6 +31,8 @@ function Listusers() {
         console.log(token)
     }, []);
 
+    
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,6 +42,7 @@ function Listusers() {
                     params: {
                         page: currentpage,
                         limit: itemsperpage,
+                        keyword: keyword
                     },
 
 
@@ -57,9 +63,9 @@ function Listusers() {
             fetchData();
         }
 
-    }, [token, currentpage, itemsperpage]);
+    }, [token, currentpage, itemsperpage, keyword]);
 
-    const HandleViewUser = (userId) => {
+    const handleViewUser = (userId) => {
         if (userId !== undefined) {
             console.log("View button clicked for user ID:", userId);
 
@@ -80,13 +86,19 @@ function Listusers() {
         }
     };
 
+    const handleSearch = (e) => {
+        const searchKeyword = e.target.value;
+        setKeyword(searchKeyword); // Update the keyword state with the new search keyword
+        setCurrentpage(1);
+    };
+
 
     return (
         <>
 
-
             <div className="header">
                 <h1>Users</h1>
+                <input type="text" placeholder="Search" value={keyword} onChange={handleSearch} />
             </div>
             {/* <div className="labels">
                 <div className="label">
@@ -105,17 +117,17 @@ function Listusers() {
             ) : (
                 data.map((user) => (
                     <div className="user-card" key={user._id}>
-                    <div className="user-info">
-                        <h3>{user.name}</h3>
-                        <p>{user.email}</p>
-                        <p>{user.phonenumber}</p>
+                        <div className="user-info">
+                            <h3>{user.name}</h3>
+                            <p>{user.email}</p>
+                            <p>{user.phonenumber}</p>
+                        </div>
+                        <div className="action-button">
+                            <Link to={`/detailsuser/${user._id}`}>
+                                <button onClick={() => handleViewUser(user._id)}>View</button>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="action-button">
-                        <Link to={`/detailsuser/${user._id}`}>
-                            <button onClick={() => handleViewUser(user._id)}>View</button>
-                        </Link>
-                    </div>
-                </div>
                 ))
             )}
 
