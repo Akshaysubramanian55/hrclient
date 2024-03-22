@@ -11,6 +11,7 @@ import Resetpassword from './Components/Resetpassword/Resetpassword'
 import ForgotPassword from './Components/Forgotpassword/Forgotpassword'
 import ChangePassword from './Components/Changepassword/Changepassword'
 import User from './Components/Users/Users'
+import Adduserformik from './Components/formikvaidation/Adduser'
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Landingpage />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path='/adduser' exact element={<Adduser/>}/>
+          <Route path='/adduser' exact element={<Adduserformik/>}/>
           <Route path='/admin'    exact element={<Admin/>}/>
           <Route path='/getuser'    exact element={<Listusers/>}/>
           <Route path='/detailsuser/:userId' exact element={<Userdetails/>}/>
