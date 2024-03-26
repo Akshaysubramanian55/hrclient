@@ -10,9 +10,9 @@ function AdminNavbar() {
     const navigate = useNavigate(); // Hook for navigation
 
     const handleLogout = () => {
-      // Perform logout actions
-      // For example, clearing session, etc.
-      navigate('/login'); // Navigate to the login page
+      
+        localStorage.removeItem('token');
+      navigate('/login'); 
     };
     return (
         <>
